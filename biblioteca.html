@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+        body {
+            font-size: 20px;
+            font-family: 'Montserrat', sans-serif;
+            
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="">Título </label><input type="text" id="tit" name="titulo"><br><br>
+        <label for="">Autor </label><input type="text" id="aut" name="autor"><br><br>
+        <label for="">Editorial </label><input type="text" id="edit" name="editorial"><br><br>
+        <label for="">Año de publicación </label><input type="text" id="y" name="year"><br><br>
+        <label for="">Signatura </label><input type="text" id="sign" name="signatura"><br><br><br>
+        <button id="add" name="add" value="añadir">Añadir</button>
+        <button id="busc" name="consultar" value="consultar">Consultar</button>
+    </form>
+    <script>
+
+        var contador=0;
+
+        function libro(titulo, autor, editorial, year, id) {
+            this.titulo = titulo;
+            this.autor = autor;
+            this.editorial = editorial
+            this.year = year;
+            this.id = contador++;
+        }    
+
+        var biblioteca = new Array();
+
+        var ejemplar = new Libro("París era una fiesta", "Heminway", "Anagrama", 1990, contador);
+
+       
+    </script>
+</body>
+</html>
+
+<!--//funcion constructora llamada biblioteca [título, autor, editorial, fecha, signatura] (sería la clase). Añadir los libros en un arrau
+    para incrementar la asignatura = hacerlo manual (un contador de programa)
+    var Biblioteca = new Array()
+
+    var ejemplar = new Libro (titulo, autor, editorial...)
+//un libro sería cada instancia -->
