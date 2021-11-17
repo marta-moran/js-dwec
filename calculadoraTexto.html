@@ -16,55 +16,43 @@
         <button name="divi" value ="divi"  onclick="calcular(this.value)">/</button><br><br>
         <input id="resultado" type="text" name="resultado"><br>
         <input type="button" value = "borrar" onclick="borrar();">
-        <!--<span id="hey">0</span> -->
     </div>
     <script>
-
-        let operando1 = 0;
-        let operando2 = 0;
+        let operando1 = document.getElementsByName("operando")[0];
+        let operando2 = document.getElementsByName("operando")[1];
+        let cajaResultado = document.getElementById("resultado");
 
         function calcular(tecla) {
 
-            operando1 = parseInt(document.getElementsByName("operando")[0].value);
-            operando2 = parseInt(document.getElementsByName("operando")[1].value);
+            operando1Value = parseInt(operando1.value);
+            operando2Value = parseInt(operando2.value);
             let resultado = 0;
-
-            console.log(tecla)
-            let cajaResultado = document.getElementById("resultado");
-           // let hey = document.getElementById("hey");
-
-            console.log(cajaResultado)
 
             switch (tecla) {
                 case "suma":
-                    resultado = operando1 + operando2;
+                    resultado = operando1Value + operando2Value;
                     break;
                 case "resta":
-                    resultado = operando1 - operando2;
+                    resultado = operando1Value - operando2Value;
                     break;
                 case "multi":
-                    resultado = operando1 * operando2;
+                    resultado = operando1Value * operando2Value;
                     break;
                 case "divi":
-                    resultado = operando1 / operando2;
+                    resultado = operando1Value / operando2Value;
                     break;
             }
 
             cajaResultado.value = resultado;
-           /* hey.innerHTML = resultado;
-            console.log(cajaResultado.innerHTML) */
-            
+   
         }
 
         function borrar() {
 
-            operando1 = document.getElementsByName("operando")[0];
-            operando2 = document.getElementsByName("operando")[1];
-            let cajaResultado = document.getElementById("resultado");
-
-            operando1.value= 0;
+            operando1.value = 0;
             operando2.value = 0;
             cajaResultado.value = 0;
+
         }
     </script>
 </body>
