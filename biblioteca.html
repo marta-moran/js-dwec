@@ -48,14 +48,18 @@
             const nuevoEjemplar = new Libro(titulo, autor, editorial, year);
 
             biblioteca.push(nuevoEjemplar);
+            alert("Has añadido " + nuevoEjemplar.titulo);
             console.log(biblioteca)
 
         }
 
-        function search() {
+        function search() { 
 
-            for(let libro of biblioteca){
-               document.write(`Titulo:  ${libro.titulo} \n Autor: ${libro.autor} \n Editorial: ${libro.editorial} \n Año: ${libro.year}`);
+            const titulo = document.getElementById("tit").value; //mediante un nametag(input) capturar lo que introduce el usuario y compararlo con titulo, autor, editorial... y si encaja con alguno ese es. 
+            for(let libro of biblioteca) { //probar un switch
+                if (libro.titulo == titulo) {
+                    document.write(`Titulo:  ${libro.titulo} <br> Autor: ${libro.autor} <br> Editorial: ${libro.editorial} <br> Año: ${libro.year}`)
+                }
             }
         }
 
@@ -63,10 +67,3 @@
 </body>
 
 </html>
-
-<!--//funcion constructora llamada biblioteca [título, autor, editorial, fecha, signatura] (sería la clase). Añadir los libros en un arrau
-    para incrementar la asignatura = hacerlo manual (un contador de programa)
-    var Biblioteca = new Array()
-
-    var ejemplar = new Libro (titulo, autor, editorial...)
-//un libro sería cada instancia -->
