@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,39 +12,56 @@
         body {
             font-size: 20px;
             font-family: 'Montserrat', sans-serif;
-            
+
         }
     </style>
 </head>
+
 <body>
-    <form>
-        <label for="">Título </label><input type="text" id="tit" name="titulo"><br><br>
-        <label for="">Autor </label><input type="text" id="aut" name="autor"><br><br>
-        <label for="">Editorial </label><input type="text" id="edit" name="editorial"><br><br>
-        <label for="">Año de publicación </label><input type="text" id="y" name="year"><br><br>
-        <label for="">Signatura </label><input type="text" id="sign" name="signatura"><br><br><br>
-        <button id="add" name="add" value="añadir">Añadir</button>
-        <button id="busc" name="consultar" value="consultar">Consultar</button>
-    </form>
+    <label for="">Título </label><input type="text" id="tit" name="titulo"><br><br>
+    <label for="">Autor </label><input type="text" id="aut" name="autor"><br><br>
+    <label for="">Editorial </label><input type="text" id="edit" name="editorial"><br><br>
+    <label for="">Año de publicación </label><input type="text" id="y" name="year"><br><br><br>
+    <button id="add" name="add" value="añadir" onclick="add()">Añadir</button>
+    <button id="busc" name="consultar" value="consultar" onclick="search()">Consultar</button>
+ 
     <script>
 
-        var contador=0;
+        var contador = 1;
+        var biblioteca = [];
 
-        function libro(titulo, autor, editorial, year, id) {
+        function Libro(titulo, autor, editorial, year) {
             this.titulo = titulo;
             this.autor = autor;
             this.editorial = editorial
             this.year = year;
             this.id = contador++;
-        }    
+        }
 
-        var biblioteca = new Array();
+        function add() {
 
-        var ejemplar = new Libro("París era una fiesta", "Heminway", "Anagrama", 1990, contador);
+            const titulo = document.getElementById("tit").value;
+            const autor = document.getElementById("aut").value;
+            const editorial = document.getElementById("edit").value;
+            const year = parseInt(document.getElementById("y").value);
 
-       
+            const nuevoEjemplar = new Libro(titulo, autor, editorial, year);
+
+            biblioteca.push(nuevoEjemplar);
+            console.log(biblioteca)
+
+        }
+
+        function search() {
+
+            for(let libro of biblioteca){
+               document.write(`Titulo:  ${libro.titulo} \n Autor: ${libro.autor} \n Editorial: ${libro.editorial} \n Año: ${libro.year}`);
+            }
+        }
+
     </script>
 </body>
+
 </html>
 
 <!--//funcion constructora llamada biblioteca [título, autor, editorial, fecha, signatura] (sería la clase). Añadir los libros en un arrau
