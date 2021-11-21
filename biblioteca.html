@@ -49,21 +49,43 @@
 
             biblioteca.push(nuevoEjemplar);
             alert("Has añadido " + nuevoEjemplar.titulo);
-            console.log(biblioteca)
+            console.log(biblioteca);
+
+            //para borrar después de introducir
+            for(let i = 0; i<5; i++) {
+            document.getElementsByTagName("input")[i].value = "";
+            }
 
         }
 
         function search() { 
-
+            //para buscar por cualquiera de los campos
             const titulo = document.getElementById("tit").value; //mediante un nametag(input) capturar lo que introduce el usuario y compararlo con titulo, autor, editorial... y si encaja con alguno ese es. 
+            const autor = document.getElementById("aut").value;
+            const editorial = document.getElementById("edit").value;
+            const year = document.getElementById("y").value;
+            
+            
             for(let libro of biblioteca) { //probar un switch
-                if (libro.titulo == titulo) {
-                    document.write(`Titulo:  ${libro.titulo} <br> Autor: ${libro.autor} <br> Editorial: ${libro.editorial} <br> Año: ${libro.year}`)
+                if (libro.titulo == titulo || libro.autor == autor || libro.editorial == editorial || libro.year == year) {
+                    document.write(`Titulo:  ${libro.titulo} <br> Autor: ${libro.autor} <br> Editorial: ${libro.editorial} <br> Año: ${libro.year} <br>`)
                 }
             }
+            
         }
+
+        /*function borrar() {
+
+           for(let i = 0; i<5; i++) {
+            document.getElementsByTagName("input")[i].value = "";
+            }
+    
+    
+        }*/
+
 
     </script>
 </body>
 
 </html>
+
