@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="">Filas </label><input type="text" id = "nFilas" name = "filas"><br><br>
+    <label for="">Carcater </label><input type="text" id="tipoCaracter" name = "caracter"><br><br>
+    <button name="crear" value="crear" onclick="crear((document.getElementsByTagName('input')[0].value),document.getElementsByTagName('input')[1].value )">Crear triángulo</button><br><br>
+    <textarea id="textarea" name = "caja" value = "caja" cols="22" rows="12"></textarea> 
+
+
+    <script>
+        function crear(filas, caracter) {
+            let cajaTexto="";
+
+            for (let i = 0; i <= filas; i++) {
+                for (let j = 0; j <=(filas-i); j++) {
+                    cajaTexto += " ";
+                }
+
+                for(let h=0; h<=i; h++) {
+                    cajaTexto += caracter;
+                }
+
+                cajaTexto += "\n";
+            }
+
+            document.getElementById('textarea').value = cajaTexto; 
+        }
+    </script>
+
+</body>
+</html>

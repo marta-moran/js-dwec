@@ -14,7 +14,10 @@
 
     <button id="add" name="add" value="añadir" onclick="add()">Añadir</button>
     <button id="buscarDetenido" name="consultar" value="consultar" onclick="search()">Consultar</button>
-    <button id="lista" name="listar" value="Ver detenidos" onclick="listar()">Ver detenidos</button>
+    <button id="lista" name="listar" value="verDni" onclick="listar(this.value)">Ver Dni</button>
+    <button id="lista" name="listar" value="VerDetenidos" onclick="listar(this.value)">Ver detenidos</button><br><br>
+    <textarea id="textarea" cols = "30" rows="15"></textarea>
+
 
     <script>
 
@@ -63,12 +66,26 @@
            
     }
         
-        function listar() {
+        function listar(opcion) {
             
-            document.write(`<br><br> <b>PERSONAS DETENIDAS:</b>`);
-            for(let persona of detenidos) {
-                document.write(`<br><br>Nombre ${persona.nombre} <br> Apellido:  ${persona.apellido} <br><br> Foto: <img src=${persona.imagen} style="width: 10%;height:auto;">`);
+            switch (opcion) {
+                case "verDni":
+                    let cajaTexto="";
+                    for(let persona of detenidos) {
+                        cajaTexto+="DNI: " + persona.dni + " APELLIDO: " + persona.apellido + "\n";
+                    }
+                    document.getElementById('textarea').value = cajaTexto; 
+                    break;
+            
+                case "verDetenidos":
+                    document.write(`<br><br> <b>PERSONAS DETENIDAS:</b>`);
+                    for(let persona of detenidos) {
+                    document.write(`<br><br>Nombre ${persona.nombre} <br> Apellido:  ${persona.apellido} <br><br> Foto: <img src=${persona.imagen} style="width: 10%;height:auto;">`);
+                }
+                    break;
             }
+            
+          
 
         }
 
@@ -80,20 +97,21 @@
             let dni = document.getElementById("dniDetenido").value;
             let img = document.getElementById("imagenDetenido").value;
             let detenido = false;
+
+
             for (let persona of detenidos) {
                 if (persona.nombre.toLowerCase() == nom || persona.apellido.toLowerCase() == apellido) {
                     document.write(`${persona.nombre}  ${persona.apellido} está detenido/a <br>`);
                     detenido = true;
                 } 
-
-                if (!detenido) {
-                    alert("esa persona no está detenida");
-                    limpiar();
-                    break;
-                }
             }  
 
-            /* 2º manera
+            if (!detenido) {
+                    alert("esa persona no está detenida");
+                    limpiar();
+                }
+ /*
+             2º manera
             for(let i = 0; i < detenidos.length; i++) {
                 if (detenidos[i].nombre == nom) {
                     document.write(`${nom} está detenido/a`)
