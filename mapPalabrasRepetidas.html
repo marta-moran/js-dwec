@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            let arrayPalabras = [];
+            let palabra = prompt("Introduce una palabra");
+            let fin = true;
+
+            while (fin) {
+                if (palabra != "" && palabra != null) {
+                    palabra = prompt("Introduce una palabra");
+                    arrayPalabras.push(palabra);
+                } else {
+                    fin = false;
+                    arrayPalabras.pop(palabra); //si entra aquí es que la palabra que ha metido en el array es "" o null, entonces se saca
+                }  
+            }
+
+            arrayPalabras.sort((a,b)=>a.localeCompare(b, "es"));
+    
+
+        function mapaDeRepeticiones(arrayPalabras) {
+
+            let mapaPalabras = new Map();
+
+            for(palabra of arrayPalabras) {
+                if(mapaPalabras.has(palabra)) {
+                    let repeticiones = mapaPalabras.get(palabra);
+                    mapaPalabras.set(palabra, repeticiones+1);
+                } else {
+                    mapaPalabras.set(palabra, 1);
+                }
+            }
+
+            console.log(mapaPalabras);
+        }
+
+        mapaDeRepeticiones(arrayPalabras)
+    </script>
+</body>
+</html>
